@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-red">
+    <div>
         Feedback list
     </div>
 </template>

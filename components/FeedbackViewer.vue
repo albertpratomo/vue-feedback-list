@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-orange">
+    <div>
         Viewer
     </div>
 </template>
