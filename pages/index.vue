@@ -4,7 +4,15 @@
 <template>
     <div class="h-full grid grid-cols-12">
         <Teleport to=".header-right">
-            hi
+            <div class="flex gap-4">
+                <Button>
+                    All feedback
+                </Button>
+
+                <Button>
+                    New feedback
+                </Button>
+            </div>
         </Teleport>
 
         <FeedbackList class="col-span-4" />
