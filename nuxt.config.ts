@@ -10,6 +10,7 @@ export default defineNuxtConfig({
         '@nuxt/eslint',
         'shadcn-nuxt',
         '@nuxtjs/tailwindcss',
+        '@nuxtjs/google-fonts',
     ],
 
     experimental: {
@@ -62,6 +63,12 @@ export default defineNuxtConfig({
     eslint: {
         config: {
             standalone: false,
+        },
+    },
+
+    googleFonts: {
+        families: {
+            Inter: [400, 500],
         },
     },
 })
