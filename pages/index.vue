@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Feedback } from '~/server/models/feedback.schema'
-
 const feedbackOnView = ref<Feedback>()
 </script>
 

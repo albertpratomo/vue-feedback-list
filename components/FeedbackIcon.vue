@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FeedbackType } from '~/server/models/feedback.schema'
+import { FeedbackType } from '~/utils/types'
 
 interface Props {
     type: FeedbackType

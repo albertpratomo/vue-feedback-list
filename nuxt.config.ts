@@ -11,32 +11,8 @@ export default defineNuxtConfig({
         'shadcn-nuxt',
         '@nuxtjs/tailwindcss',
         '@nuxtjs/google-fonts',
+        'nuxt-mongoose',
     ],
-
-    experimental: {
-    // when using generate, payload js assets included in sw precache manifest
-    // but missing on offline, disabling extraction it until fixed
-        payloadExtraction: false,
-        renderJsonPayloads: true,
-        typedPages: true,
-    },
-
-    colorMode: {
-        classSuffix: '',
-    },
-
-    nitro: {
-        esbuild: {
-            options: {
-                target: 'esnext',
-            },
-        },
-        prerender: {
-            crawlLinks: false,
-            routes: ['/'],
-            ignore: ['/hi'],
-        },
-    },
 
     app: {
         head: {
@@ -54,7 +30,9 @@ export default defineNuxtConfig({
         },
     },
 
-    pwa,
+    colorMode: {
+        classSuffix: '',
+    },
 
     devtools: {
         enabled: true,
@@ -66,9 +44,33 @@ export default defineNuxtConfig({
         },
     },
 
+    experimental: {
+        // when using generate, payload js assets included in sw precache manifest
+        // but missing on offline, disabling extraction it until fixed
+        payloadExtraction: false,
+        renderJsonPayloads: true,
+        typedPages: true,
+    },
+
     googleFonts: {
         families: {
             Inter: [400, 500],
         },
     },
+
+    mongoose: {
+        options: {
+            dbName: 'vueFeedbackList',
+        },
+    },
+
+    nitro: {
+        esbuild: {
+            options: {
+                target: 'esnext',
+            },
+        },
+    },
+
+    pwa,
 })

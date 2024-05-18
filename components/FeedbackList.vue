@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import type { Feedback } from '~/server/models/feedback.schema'
-
 const emit = defineEmits<{
     view: [feedback: Feedback]
 }>()
 
-const { data: feedbacks } = await useFetch('/api/feedback')
+const { data: feedbacks } = await useFetch<Feedback[]>('/api/feedback')
 
 const feedbackOnView = ref(feedbacks.value[0])
 
