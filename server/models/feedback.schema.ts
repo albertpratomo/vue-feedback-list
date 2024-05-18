@@ -4,6 +4,7 @@ export enum FeedbackType {
 }
 
 export interface Feedback {
+    _id: number
     type: FeedbackType
     title: string
     body: string
