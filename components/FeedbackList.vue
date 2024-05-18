@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { formatTimeAgo } from '@vueuse/core'
+
 const emit = defineEmits<{
     view: [feedback: Feedback]
 }>()
@@ -22,13 +24,17 @@ watchImmediate(() => feedbackOnView.value?._id, () => emit('view', feedbackOnVie
             >
                 <FeedbackIcon :type="feedback.type" />
 
-                <div>
+                <div class="grow">
                     <div class="text-slate-800 font-medium">
                         {{ feedback.title }}
                     </div>
 
-                    <div class="text-xs">
+                    <div class="text-xs font-medium flex justify-between mt-0.5">
                         {{ feedback.reporterName }}
+
+                        <div>
+                            {{ formatTimeAgo(new Date(feedback.createdAt)) }}
+                        </div>
                     </div>
                 </div>
             </li>

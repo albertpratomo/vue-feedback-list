@@ -1,4 +1,5 @@
 import { defineMongooseModel } from '#nuxt/mongoose'
+import type { Feedback } from '~/utils/types'
 import { FeedbackType } from '~/utils/types'
 
 export const FeedbackModel = defineMongooseModel<Feedback>({
