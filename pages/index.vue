@@ -5,15 +5,7 @@ const feedbackOnView = ref<Feedback>()
 <template>
     <div class="h-full grid grid-cols-12">
         <Teleport to=".header-right">
-            <div class="flex gap-4">
-                <Button>
-                    All feedback
-                </Button>
-
-                <Button>
-                    New feedback
-                </Button>
-            </div>
+            <FeedbackCreateDialog />
         </Teleport>
 
         <FeedbackList
