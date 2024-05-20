@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { data: feedbacks } = await useFetch<StoredFeedback[]>('/api/feedback')
+const { data, error } = await useFetch<StoredFeedback[]>('/api/feedback')
+
+const feedbacks = ref<StoredFeedback[]>(data.value || [])
 
 const feedbackOnView = ref(feedbacks.value[0])
 </script>
@@ -22,6 +24,13 @@ const feedbackOnView = ref(feedbacks.value[0])
                 v-if="feedbackOnView"
                 :feedback="feedbackOnView"
             />
+
+            <div
+                v-else-if="error"
+                class="bg-red-100 p-4 rounded"
+            >
+                {{ error }}
+            </div>
         </div>
     </div>
 </template>
