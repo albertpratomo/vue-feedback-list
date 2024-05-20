@@ -6,7 +6,7 @@ export type FeedbackType = z.infer<typeof FeedbackTypeEnum>
 
 export const FeedbackSchema = z.object({
     type: FeedbackTypeEnum,
-    title: z.string().min(100),
+    title: z.string(),
     body: z.string(),
     reporterName: z.string(),
     reporterEmail: z.string().email(),

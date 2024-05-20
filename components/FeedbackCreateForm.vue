@@ -1,27 +1,20 @@
 <script setup lang="ts">
 import { useForm } from 'vee-validate'
-import {
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+import type { IFetchError } from 'ofetch'
 
 const form = useForm<Feedback>({
-    validationSchema: undefined,
+    initialValues: { type: 'Bug' },
 })
 
 async function onSubmit() {
-    const { error } = await useFetch('/api/feedback', {
+    await $fetch('/api/feedback', {
         method: 'post',
         body: form.values,
         watch: false,
+    }).catch((e: IFetchError) => {
+        if (e.statusCode === 422)
+            form.setErrors(e.data.data.fieldErrors)
     })
-
-    if (error.value?.data?.statusCode === 422)
-        form.setErrors(error.value.data.data.fieldErrors)
 }
 </script>
 
@@ -30,12 +23,60 @@ async function onSubmit() {
         class="flex flex-col gap-4"
         @submit.prevent="onSubmit"
     >
+        <FormField v-slot="{ componentField }" name="reporterName">
+            <FormItem>
+                <FormLabel>Name</FormLabel>
+
+                <FormControl>
+                    <Input type="text" v-bind="componentField" />
+                </FormControl>
+
+                <FormMessage />
+            </FormItem>
+        </FormField>
+
+        <FormField v-slot="{ componentField }" name="reporterEmail">
+            <FormItem>
+                <FormLabel>Email</FormLabel>
+
+                <FormControl>
+                    <Input type="email" v-bind="componentField" />
+                </FormControl>
+
+                <FormMessage />
+            </FormItem>
+        </FormField>
+
+        <FormField v-slot="{ componentField }" name="type">
+            <FormItem>
+                <FormLabel>Type</FormLabel>
+
+                <FormControl>
+                    <FeedbackTypeSelect v-bind="componentField" />
+                </FormControl>
+
+                <FormMessage />
+            </FormItem>
+        </FormField>
+
         <FormField v-slot="{ componentField }" name="title">
             <FormItem>
                 <FormLabel>Title</FormLabel>
 
                 <FormControl>
                     <Input type="text" v-bind="componentField" />
+                </FormControl>
+
+                <FormMessage />
+            </FormItem>
+        </FormField>
+
+        <FormField v-slot="{ componentField }" name="body">
+            <FormItem>
+                <FormLabel>Message</FormLabel>
+
+                <FormControl>
+                    <Textarea type="text" v-bind="componentField" />
                 </FormControl>
 
                 <FormMessage />

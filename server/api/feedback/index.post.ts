@@ -1,17 +1,16 @@
 import { FeedbackSchema } from '~/models/feedback'
 
 export default defineEventHandler(async (event) => {
-    const result = await readValidatedBody(event, body => FeedbackSchema.safeParse(body))
+    const validation = await readValidatedBody(event, body => FeedbackSchema.safeParse(body))
 
-    if (!result.success) {
+    if (!validation.success) {
         throw createError({
             statusCode: 422,
             statusMessage: 'Invalid data',
-            data: result.error.flatten(),
+            data: validation.error.flatten(),
             stack: undefined,
         })
     }
 
-    // TODO: Store feedback to mongodb.
-    return result.data
+    return FeedbackModel.create(validation.data)
 })

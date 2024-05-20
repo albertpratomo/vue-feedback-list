@@ -1,13 +1,3 @@
-<script setup lang="ts">
-import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from '~/components/ui/dialog'
-</script>
-
 <template>
     <Dialog>
         <DialogTrigger>
