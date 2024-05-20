@@ -1,14 +1,18 @@
 <script setup lang="ts">
-const feedbackOnView = ref<StoredFeedback>()
+const { data: feedbacks } = await useFetch<StoredFeedback[]>('/api/feedback')
+
+const feedbackOnView = ref(feedbacks.value[0])
 </script>
 
 <template>
     <div class="h-full grid grid-cols-12">
         <Teleport to=".header-right">
-            <FeedbackCreateDialog />
+            <FeedbackCreateDialog @created="feedbacks?.unshift($event)" />
         </Teleport>
 
         <FeedbackList
+            :feedbacks="feedbacks"
+            :feedback-on-view="feedbackOnView"
             class="col-span-4"
             @view="feedbackOnView = $event"
         />

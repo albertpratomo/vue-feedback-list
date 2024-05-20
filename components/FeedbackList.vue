@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { formatTimeAgo } from '@vueuse/core'
 
+interface Props {
+    feedbacks: StoredFeedback[]
+    feedbackOnView: StoredFeedback
+}
+
+defineProps<Props>()
+
 const emit = defineEmits<{
     view: [feedback: StoredFeedback]
 }>()
-
-const { data: feedbacks } = await useFetch<StoredFeedback[]>('/api/feedback')
-
-const feedbackOnView = ref(feedbacks.value[0])
-
-watchImmediate(() => feedbackOnView.value?._id, () => emit('view', feedbackOnView.value))
 </script>
 
 <template>
@@ -20,7 +21,7 @@ watchImmediate(() => feedbackOnView.value?._id, () => emit('view', feedbackOnVie
                 :key="feedback._id"
                 class="flex gap-2 p-3 rounded hover:bg-slate-200 cursor-pointer transition-colors"
                 :class="{ 'bg-slate-200': feedback._id === feedbackOnView?._id }"
-                @click="feedbackOnView = feedback"
+                @click="emit('view', feedback)"
             >
                 <FeedbackIcon :type="feedback.type" />
 

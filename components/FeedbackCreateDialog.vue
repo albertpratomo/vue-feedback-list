@@ -1,5 +1,19 @@
+<script setup lang="ts">
+const emit = defineEmits<{
+    created: [feedback: StoredFeedback]
+}>()
+
+const open = ref(false)
+
+function onCreated(feedback: StoredFeedback) {
+    emit('created', feedback)
+
+    open.value = false
+}
+</script>
+
 <template>
-    <Dialog>
+    <Dialog v-model:open="open">
         <DialogTrigger>
             <Button>
                 New feedback
@@ -12,7 +26,7 @@
             </DialogHeader>
 
             <div class="p-8">
-                <FeedbackCreateForm />
+                <FeedbackCreateForm @created="onCreated" />
             </div>
         </DialogContent>
     </Dialog>

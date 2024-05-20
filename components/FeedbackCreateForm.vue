@@ -2,19 +2,24 @@
 import { useForm } from 'vee-validate'
 import type { IFetchError } from 'ofetch'
 
+const emit = defineEmits<{
+    created: [feedback: StoredFeedback]
+}>()
+
 const form = useForm<Feedback>({
     initialValues: { type: 'Bug' },
 })
 
 async function onSubmit() {
-    await $fetch('/api/feedback', {
+    const feedback = await $fetch<StoredFeedback>('/api/feedback', {
         method: 'post',
         body: form.values,
-        watch: false,
     }).catch((e: IFetchError) => {
         if (e.statusCode === 422)
             form.setErrors(e.data.data.fieldErrors)
     })
+
+    emit('created', feedback!)
 }
 </script>
 
@@ -76,7 +81,7 @@ async function onSubmit() {
                 <FormLabel>Message</FormLabel>
 
                 <FormControl>
-                    <Textarea type="text" v-bind="componentField" />
+                    <Textarea type="text" v-bind="componentField" rows="5" />
                 </FormControl>
 
                 <FormMessage />
