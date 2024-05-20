@@ -13,7 +13,7 @@ const feedbackOnView = ref<Feedback>()
             @view="feedbackOnView = $event"
         />
 
-        <div class="col-span-8 py-20 px-20 bg-white">
+        <div class="col-span-8 p-6 lg:p-8 xl:py-20 xl:px-20 bg-white">
             <FeedbackViewer
                 v-if="feedbackOnView"
                 :feedback="feedbackOnView"
