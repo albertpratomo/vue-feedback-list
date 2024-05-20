@@ -2,7 +2,7 @@
 import { formatTimeAgo } from '@vueuse/core'
 
 interface Props {
-    feedback: Feedback
+    feedback: StoredFeedback
 }
 
 defineProps<Props>()

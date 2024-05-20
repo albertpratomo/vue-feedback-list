@@ -2,10 +2,10 @@
 import { formatTimeAgo } from '@vueuse/core'
 
 const emit = defineEmits<{
-    view: [feedback: Feedback]
+    view: [feedback: StoredFeedback]
 }>()
 
-const { data: feedbacks } = await useFetch<Feedback[]>('/api/feedback')
+const { data: feedbacks } = await useFetch<StoredFeedback[]>('/api/feedback')
 
 const feedbackOnView = ref(feedbacks.value[0])
 

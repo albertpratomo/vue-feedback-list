@@ -14,11 +14,14 @@ const form = useForm<Feedback>({
 })
 
 async function onSubmit() {
-    await useFetch('/api/feedback', {
+    const { error } = await useFetch('/api/feedback', {
         method: 'post',
         body: form.values,
         watch: false,
     })
+
+    if (error.value?.data?.statusCode === 422)
+        form.setErrors(error.value.data.data.fieldErrors)
 }
 </script>
 

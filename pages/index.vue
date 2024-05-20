@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const feedbackOnView = ref<Feedback>()
+const feedbackOnView = ref<StoredFeedback>()
 </script>
 
 <template>

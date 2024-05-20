@@ -1,33 +1,12 @@
+import { zodSchema } from '@zodyac/zod-mongoose'
 import { defineMongooseModel } from '#nuxt/mongoose'
-import type { Feedback } from '~/utils/types'
-import { FeedbackType } from '~/utils/types'
+import { type Feedback, FeedbackSchema } from '~/models/feedback'
+
+const schema = zodSchema(FeedbackSchema)
 
 export const FeedbackModel = defineMongooseModel<Feedback>({
     name: 'Feedback',
-    schema: {
-        type: {
-            type: Number,
-            enum: FeedbackType,
-            required: true,
-        },
-        title: {
-            type: String,
-            required: true,
-        },
-        body: {
-            type: String,
-            required: true,
-        },
-        reporterName: {
-            type: String,
-            required: true,
-        },
-        reporterEmail: {
-            type: String,
-            required: true,
-            match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please fill a valid email address'],
-        },
-    },
+    schema: schema.obj,
     options: {
         timestamps: true,
     },

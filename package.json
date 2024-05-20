@@ -14,13 +14,15 @@
         "typecheck": "vue-tsc --noEmit"
     },
     "dependencies": {
+        "@zodyac/zod-mongoose": "^1.1.2",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",
         "lucide-vue-next": "^0.378.0",
         "radix-vue": "^1.8.0",
         "tailwind-merge": "^2.3.0",
         "tailwindcss-animate": "^1.0.7",
-        "vee-validate": "^4.12.8"
+        "vee-validate": "^4.12.8",
+        "zod": "^3.23.8"
     },
     "devDependencies": {
         "@antfu/eslint-config": "^2.17.0",

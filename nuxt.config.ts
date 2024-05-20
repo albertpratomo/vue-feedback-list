@@ -58,6 +58,10 @@ export default defineNuxtConfig({
         },
     },
 
+    imports: {
+        dirs: ['./models'],
+    },
+
     mongoose: {
         options: {
             dbName: 'vueFeedbackList',
