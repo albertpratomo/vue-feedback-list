@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import {
     Dialog,
-    DialogClose,
     DialogContent,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -23,21 +21,9 @@ import {
                 <DialogTitle>Add new feedback</DialogTitle>
             </DialogHeader>
 
-            <div class="px-8 py-4">
-                Test
+            <div class="p-8">
+                <FeedbackCreateForm />
             </div>
-
-            <DialogFooter>
-                <DialogClose>
-                    <Button variant="secondary">
-                        Discard
-                    </Button>
-                </DialogClose>
-
-                <Button>
-                    Send feedback
-                </Button>
-            </DialogFooter>
         </DialogContent>
     </Dialog>
 </template>
