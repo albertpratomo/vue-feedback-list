@@ -3,7 +3,6 @@ import type { HTMLAttributes } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { EditorContent, useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
-import { cn } from '~/utils'
 
 const props = defineProps<{
     class?: HTMLAttributes['class']
