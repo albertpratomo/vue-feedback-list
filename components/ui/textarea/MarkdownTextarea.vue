@@ -39,7 +39,7 @@ const editor = useEditor({
 
 <template>
     <EditorContent
-        :class="cn('prose prose-sm min-h-40 rounded-md border border-input bg-background px-3 py-2 ring-offset-background focus-within:outline-none focus-within:ring-1 focus-within:ring-ring disabled:cursor-not-allowed disabled:opacity-50', props.class)"
+        :class="cn('prose prose-sm text-slate-800 min-h-40 rounded-md border border-input bg-background px-3 py-2 ring-offset-background focus-within:outline-none focus-within:ring-1 focus-within:ring-ring disabled:cursor-not-allowed disabled:opacity-50', props.class)"
         :editor="editor"
     />
 </template>

@@ -26,7 +26,10 @@ function onCreated(feedback: StoredFeedback) {
             </DialogHeader>
 
             <div class="p-8">
-                <FeedbackCreateForm @created="onCreated" />
+                <FeedbackCreateForm
+                    @created="onCreated"
+                    @discard="open = false"
+                />
             </div>
         </DialogContent>
     </Dialog>

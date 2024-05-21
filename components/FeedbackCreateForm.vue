@@ -6,6 +6,7 @@ import { toTypedSchema } from '@vee-validate/zod'
 
 const emit = defineEmits<{
     created: [feedback: StoredFeedback]
+    discard: []
 }>()
 
 const form = useForm<Feedback>({
@@ -96,7 +97,11 @@ const onSubmit = form.handleSubmit(async (body) => {
         </FormField>
 
         <div class="flex justify-end gap-4">
-            <Button variant="secondary">
+            <Button
+                variant="secondary"
+                type="button"
+                @click="emit('discard')"
+            >
                 Discard
             </Button>
 
