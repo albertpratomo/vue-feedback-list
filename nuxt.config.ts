@@ -1,12 +1,8 @@
-import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
 export default defineNuxtConfig({
     modules: [
         '@vueuse/nuxt',
-        '@pinia/nuxt',
-        '@nuxtjs/color-mode',
-        '@vite-pwa/nuxt',
         '@nuxt/eslint',
         'shadcn-nuxt',
         '@nuxtjs/tailwindcss',
@@ -28,10 +24,6 @@ export default defineNuxtConfig({
                 { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
             ],
         },
-    },
-
-    colorMode: {
-        classSuffix: '',
     },
 
     devtools: {
@@ -75,6 +67,4 @@ export default defineNuxtConfig({
             },
         },
     },
-
-    pwa,
 })
