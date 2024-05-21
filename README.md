@@ -25,6 +25,7 @@ The tech stack: Vue 3, Nuxt 3, Tailwind, TS, MongoDB, Mongoose, Zod, VeeValidate
 1. I made it tablet and desktop responsive.
 
 ## Improvement list
+
 1. Use vue-i18n instead of hardcoding texts.
 1. Make the app mobile responsive.
 1. Add features: filter, sort, pagination.
