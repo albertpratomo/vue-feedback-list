@@ -42,3 +42,9 @@
         @apply border-border;
     }
 }
+
+@layer components {
+    .prose :where(p):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+        @apply my-0;
+    }
+}

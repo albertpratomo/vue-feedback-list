@@ -32,9 +32,10 @@ defineProps<Props>()
                 {{ feedback.reporterName }} ({{ feedback.reporterEmail }})
             </div>
 
-            <div class="mt-6 text-slate-800">
-                {{ feedback.body }}
-            </div>
+            <div
+                class="mt-6 text-slate-800 prose"
+                v-html="feedback.body"
+            />
         </div>
     </div>
 </template>

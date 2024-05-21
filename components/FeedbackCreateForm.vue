@@ -85,7 +85,10 @@ const onSubmit = form.handleSubmit(async (body) => {
                 <FormLabel>Message</FormLabel>
 
                 <FormControl>
-                    <Textarea type="text" v-bind="componentField" rows="5" />
+                    <MarkdownTextarea
+                        placeholder="You can use markdown here"
+                        v-bind="componentField"
+                    />
                 </FormControl>
 
                 <FormMessage />
