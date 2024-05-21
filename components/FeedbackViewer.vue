@@ -9,7 +9,11 @@ defineProps<Props>()
 </script>
 
 <template>
-    <div class="flex gap-3">
+    <div
+        class="flex gap-3"
+        role="main"
+        aria-label="Feedback viewer"
+    >
         <FeedbackIcon
             :type="feedback.type"
             class="mt-6"

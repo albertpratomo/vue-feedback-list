@@ -15,12 +15,16 @@ const emit = defineEmits<{
 
 <template>
     <div>
-        <ul class="p-1 gap-1">
+        <ul
+            class="p-1 gap-1"
+            aria-label="Feedback list"
+        >
             <li
                 v-for="feedback in feedbacks"
                 :key="feedback._id"
                 class="flex gap-2 p-3 rounded hover:bg-slate-200 cursor-pointer transition-colors"
                 :class="{ 'bg-slate-200': feedback._id === feedbackOnView?._id }"
+                :aria-label="feedback.title"
                 @click="emit('view', feedback)"
             >
                 <FeedbackIcon :type="feedback.type" />
