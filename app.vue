@@ -11,3 +11,9 @@ useHead({
         <NuxtPage />
     </NuxtLayout>
 </template>
+
+<style>
+body {
+    @apply bg-background;
+}
+</style>

@@ -26,6 +26,8 @@ The tech stack: Vue 3, Nuxt 3, Tailwind, TS, MongoDB, Mongoose, Zod, VeeValidate
 
 ## Improvement list
 
+1. Simplify form markup in `FeedbackCreateForm.vue`.
+1. Write component test for `FeedbackCreateForm.vue`.
 1. Use vue-i18n instead of hardcoding texts.
 1. Make the app mobile responsive.
 1. Add features: filter, sort, pagination.

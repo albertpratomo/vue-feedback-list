@@ -13,6 +13,7 @@
                     <SelectItem :value="type">
                         <div class="flex gap-2 items-center">
                             <FeedbackIcon :type="type" />
+
                             {{ type }}
                         </div>
                     </SelectItem>
