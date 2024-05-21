@@ -32,7 +32,10 @@ const editor = useEditor({
         StarterKit,
     ],
     onUpdate({ editor }) {
-        modelValue.value = editor.getHTML()
+        // If there is no text, the value is considered empty.
+        modelValue.value = editor.getText().trim() === ''
+            ? ''
+            : editor.getHTML()
     },
 })
 </script>
