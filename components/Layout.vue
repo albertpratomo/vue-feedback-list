@@ -4,11 +4,11 @@
             <div class="container py-4 px-8 flex justify-between items-center">
                 <img src="/logo.webp" height="70" width="70" class="mix-blend-multiply">
 
-                <div class="header-right" />
+                <slot name="header-right" />
             </div>
         </header>
 
-        <main class="container">
+        <main class="container min-w-[700px]">
             <slot />
         </main>
     </div>

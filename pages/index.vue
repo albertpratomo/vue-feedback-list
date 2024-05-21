@@ -7,30 +7,34 @@ const feedbackOnView = ref(feedbacks.value[0])
 </script>
 
 <template>
-    <div class="h-full grid grid-cols-12">
-        <Teleport to=".header-right">
+    <Layout>
+        <template #header-right>
             <FeedbackCreateDialog @created="feedbacks?.unshift($event)" />
-        </Teleport>
+        </template>
 
-        <FeedbackList
-            :feedbacks="feedbacks"
-            :feedback-on-view="feedbackOnView"
-            class="col-span-4"
-            @view="feedbackOnView = $event"
-        />
+        <Suspense>
+            <div class="h-full grid grid-cols-12">
+                <FeedbackList
+                    :feedbacks="feedbacks"
+                    :feedback-on-view="feedbackOnView"
+                    class="col-span-4 max-h-[calc(100vh-105px)] overflow-y-auto"
+                    @view="feedbackOnView = $event"
+                />
 
-        <div class="col-span-8 p-6 lg:p-8 xl:py-20 xl:px-20 bg-white">
-            <FeedbackViewer
-                v-if="feedbackOnView"
-                :feedback="feedbackOnView"
-            />
+                <div class="col-span-8 p-6 lg:p-8 xl:py-20 xl:px-20 bg-white">
+                    <FeedbackViewer
+                        v-if="feedbackOnView"
+                        :feedback="feedbackOnView"
+                    />
 
-            <div
-                v-else-if="error"
-                class="bg-red-100 p-4 rounded"
-            >
-                {{ error }}
+                    <div
+                        v-else-if="error"
+                        class="bg-red-100 p-4 rounded"
+                    >
+                        {{ error }}
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </Suspense>
+    </Layout>
 </template>
